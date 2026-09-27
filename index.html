@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
 
@@ -11,11 +12,30 @@
 
 <body>
 
-    <h1>Lesson Plan</h1>
+    <div id="content">
+        Loading...
+    </div>
 
-    <p>
-        My Lesson Plan Project
-    </p>
+    <script>
+
+        fetch("Lesson%20Plan.md")
+            .then(response => response.text())
+            .then(markdown => {
+
+                document.getElementById("content").innerText = markdown;
+
+            })
+            .catch(error => {
+
+                document.getElementById("content").innerText =
+                    "Error loading Lesson Plan.md";
+
+                console.error(error);
+
+            });
+
+    </script>
 
 </body>
+
 </html>
