@@ -10,16 +10,284 @@
 
     <title>Lesson Plan</title>
 
+
     <!-- Markdown Parser -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+
+    <style>
+
+        /* =========================
+           GLOBAL
+        ========================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            background: #f5f7fa;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #222;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================== */
+
+        #content {
+
+            max-width: 900px;
+
+            margin: 40px auto;
+
+            padding: 40px;
+
+            background: white;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+
+        /* =========================
+           HEADINGS
+        ========================== */
+
+        h1 {
+
+            font-size: 2.2rem;
+
+            margin-top: 0;
+
+            margin-bottom: 25px;
+        }
+
+
+        h2 {
+
+            font-size: 1.7rem;
+
+            margin-top: 40px;
+
+            margin-bottom: 15px;
+        }
+
+
+        h3 {
+
+            font-size: 1.35rem;
+
+            margin-top: 30px;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================
+           PARAGRAPHS
+        ========================== */
+
+        p {
+
+            margin: 0 0 18px 0;
+        }
+
+
+        /* =========================
+           LISTS
+        ========================== */
+
+        ul,
+        ol {
+
+            padding-left: 28px;
+
+            margin-bottom: 20px;
+        }
+
+
+        li {
+
+            margin-bottom: 7px;
+        }
+
+
+        /* =========================
+           LINKS
+        ========================== */
+
+        a {
+
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           CODE
+        ========================== */
+
+        code {
+
+            padding: 2px 6px;
+
+            border-radius: 4px;
+
+            background: #f0f2f5;
+
+            font-family:
+                Consolas,
+                monospace;
+        }
+
+
+        pre {
+
+            padding: 18px;
+
+            overflow-x: auto;
+
+            border-radius: 8px;
+
+            background: #f0f2f5;
+        }
+
+
+        pre code {
+
+            padding: 0;
+
+            background: transparent;
+        }
+
+
+        /* =========================
+           TABLES
+        ========================== */
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            margin: 25px 0;
+        }
+
+
+        th,
+        td {
+
+            padding: 12px;
+
+            border: 1px solid #ddd;
+
+            text-align: left;
+        }
+
+
+        th {
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           BLOCKQUOTES
+        ========================== */
+
+        blockquote {
+
+            margin: 20px 0;
+
+            padding: 12px 20px;
+
+            border-left: 4px solid #999;
+
+            background: #f7f7f7;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 700px) {
+
+            #content {
+
+                margin: 0;
+
+                padding: 22px;
+
+                border-radius: 0;
+
+                box-shadow: none;
+            }
+
+
+            h1 {
+
+                font-size: 1.8rem;
+            }
+
+
+            h2 {
+
+                font-size: 1.45rem;
+            }
+
+
+            h3 {
+
+                font-size: 1.2rem;
+            }
+
+
+            body {
+
+                font-size: 16px;
+
+                line-height: 1.65;
+            }
+
+
+            table {
+
+                display: block;
+
+                overflow-x: auto;
+
+                white-space: nowrap;
+            }
+        }
+
+    </style>
 
 </head>
 
 
 <body>
 
+
     <main id="content">
+
         Loading...
+
     </main>
 
 
@@ -30,23 +298,31 @@
             .then(response => {
 
                 if (!response.ok) {
-                    throw new Error("Could not load Lesson Plan.md");
+
+                    throw new Error(
+                        "Could not load Lesson Plan.md"
+                    );
+
                 }
 
                 return response.text();
 
             })
 
+
             .then(markdown => {
 
-                document.getElementById("content").innerHTML =
+                document.getElementById("content")
+                    .innerHTML =
                     marked.parse(markdown);
 
             })
 
+
             .catch(error => {
 
-                document.getElementById("content").innerHTML =
+                document.getElementById("content")
+                    .innerHTML =
                     "<p>Unable to load the lesson plan.</p>";
 
                 console.error(error);
